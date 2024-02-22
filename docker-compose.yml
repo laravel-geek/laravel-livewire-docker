@@ -1,0 +1,41 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+      - postgres
+    volumes:
+      - ./laravel/public:/var/www/laravel/public
+  php:
+    build:
+      context: ./docker/php
+    volumes:
+      - ./laravel:/var/www/laravel
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: laravel_db
+      POSTGRES_USER: laravel_user
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - .db_data:/var/lib/postgresql/data
+  composer:
+    build:
+      context: ./docker/composer
+      dockerfile: Dockerfile
+    volumes:
+      - ./laravel:/var/www/laravel
+  artisan:
+    build:
+      context: docker
+      dockerfile: php
+    volumes:
+      - ./laravel:/var/www/laravel
+    entrypoint: ["php", "/var/www/laravel/artisan"]
+
