@@ -16,16 +16,16 @@ To get started with this project, ensure you have Docker and Docker Compose inst
 
 1. Clone the repository to your local machine:
 
-git clone https://github.com/laravel-geek/laravel-livewire-docker.git
+`git clone https://github.com/laravel-geek/laravel-livewire-docker.git`
 
 2. Navigate to the project directory:
 
-cd laravel-livewire-docker
+`cd laravel-livewire-docker`
 
 
 3. Launch the Docker containers:
 
-docker-compose up nginx -d
+`docker-compose up nginx -d`
 
 
 ### Configuration
@@ -33,11 +33,11 @@ docker-compose up nginx -d
 - To access the Laravel application, go to http://localhost in your web browser.
 - To execute Artisan commands, use:
 
-docker-compose run --rm artisan <command>
+`docker-compose run --rm artisan <command>`
 
 - To work with Composer:
 
-docker-compose run --rm composer <command>
+`docker-compose run --rm composer <command>`
 
 
 ## Project Structure
