@@ -33,8 +33,8 @@ services:
       - ./laravel:/var/www/laravel
   artisan:
     build:
-      context: docker
-      dockerfile: php
+      context: ./docker/php
+      dockerfile: Dockerfile
     volumes:
       - ./laravel:/var/www/laravel
     entrypoint: ["php", "/var/www/laravel/artisan"]
